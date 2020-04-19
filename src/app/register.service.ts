@@ -23,8 +23,10 @@ export class RegisterService {
      ;*/
     }
 
-    pingServer(): Observable<any> {
-        return this.httpClient.get<any>(this.url);
+    pingServer(): Observable<string> {
+        // @ts-ignore
+        return this.httpClient.get<string>(this.url, {responseType: 'text'})
+            .pipe();
     }
 
 }

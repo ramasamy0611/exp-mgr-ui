@@ -23,10 +23,9 @@ export class RegisterComponent implements OnInit {
 
     onClick(user: User) {
         this.registerService.pingServer()
-            .subscribe({
-                next: answer1 => console.info('Received from server', answer1),
-                error: error => this.handleError(error)
-            });
+            .toPromise()
+            .then(answer => console.info('Received from server', answer))
+            .catch(error => this.handleError(error));
         /* this.registerService.addUser(user)
              .subscribe({
                  // tslint:disable-next-line:no-shadowed-variable
