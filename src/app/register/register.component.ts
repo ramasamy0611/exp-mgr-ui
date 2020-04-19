@@ -22,12 +22,17 @@ export class RegisterComponent implements OnInit {
 
 
     onClick(user: User) {
-        this.registerService.addUser(user)
+        this.registerService.pingServer()
             .subscribe({
-                // tslint:disable-next-line:no-shadowed-variable
-                next: user => console.info('user name added is', user.firstName),
+                next: answer1 => console.info('Received from server', answer1),
                 error: error => this.handleError(error)
             });
+        /* this.registerService.addUser(user)
+             .subscribe({
+                 // tslint:disable-next-line:no-shadowed-variable
+                 next: user => console.info('user name added is', user),
+                 error: error => this.handleError(error)
+             });*/
     }
 
     private handleError(error: HttpErrorResponse) {
