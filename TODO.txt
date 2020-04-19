@@ -1,4 +1,9 @@
-15-04-2020:
+19-04-2020:
+-----------
+Apply standards in Angular
+Apply filters in Spring Boot
+
+15-04-2020: --done
 ----------
 Fix the http post method and commit
 if fails the start understanding the http and make a simple get request to back end
