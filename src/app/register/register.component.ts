@@ -12,7 +12,7 @@ import {throwError} from 'rxjs';
     styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-    user: User = {firstName: '', emailId: '', password: '', lastName: ''};
+    user: User = {id: 0, firstName: '', emailId: '', password: '', lastName: '', type: ''};
 
     constructor(activatedRoute: ActivatedRoute, location: Location, private registerService: RegisterService) {
     }
@@ -22,13 +22,14 @@ export class RegisterComponent implements OnInit {
 
 
     onClick(user: User) {
-       /*  this.registerService.pingServer()
-             .toPromise()
-             .then(answer => console.info('Received from server', answer))
-             .catch(error => this.handleError(error));*/
+        /*  this.registerService.pingServer()
+              .toPromise()
+              .then(answer => console.info('Received from server', answer))
+              .catch(error => this.handleError(error));*/
+        user.type = 'User';
         this.registerService.addUser(user)
             .toPromise()
-            .then(answer => console.info('Received from server', answer.emailId))
+            .then(answer => console.info('Received from server', JSON.stringify(answer)))
             .catch(error => this.handleError(error));
     }
 

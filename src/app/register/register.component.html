@@ -14,7 +14,8 @@
 
         <label><b>Password</b></label>
         <input name="password" type="password" [(ngModel)]="user.password"/>
-
+        <!-- Material unchecked -->
+<!--        <mdb-checkbox name="isAdminCheck" [(ngModel)]="user.type" >Are you Admin</mdb-checkbox>-->
         <p>By creating an account you agree to our <a routerLink="#">Terms & Privacy</a>.</p>
         <button name="regbtn" type="submit" class="registerbtn" (click)="onClick(user)">Register</button>
     </form>
