@@ -3,6 +3,10 @@
 Apply standards in Angular
 Apply filters in Spring Boot
 
+19-04-2020:
+-----------
+Add user from UI was success
+
 15-04-2020: --done
 ----------
 Fix the http post method and commit
