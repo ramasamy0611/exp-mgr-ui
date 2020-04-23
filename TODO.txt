@@ -1,7 +1,17 @@
-19-04-2020:
+24-04-2020:
 -----------
-Apply standards in Angular
+Apply auth in Angular
+    oAuth2
 Apply filters in Spring Boot
+    --do filter
+    --oAuth 2
+
+23-04-2020:
+-----------
+Apply filters in Spring Boot -- partially -
+       webconfigurer works as a file
+            -- restricted origin and headers
+
 
 19-04-2020:
 -----------
