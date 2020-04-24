@@ -21,3 +21,111 @@ Add user from UI was success
 ----------
 Fix the http post method and commit
 if fails the start understanding the http and make a simple get request to back end
+
+24-04-2020:
+-----------
+Apply auth in Angular
+    oAuth2
+Apply filters in Spring Boot
+    --do filter
+    --oAuth 2
+
+23-04-2020:
+-----------
+Apply filters in Spring Boot -- partially -
+       webconfigurer works as a file
+            -- restricted origin and headers
+
+
+19-04-2020:
+-----------
+Add user from UI was success
+
+15-04-2020: --done
+----------
+Fix the http post method and commit
+if fails the start understanding the http and make a simple get request to back end
+
+Vision:
+=======
+Story1:
+    Authentication:
+        Apply auth in Angular
+            oAuth2
+                Task1: set up an authentication server in docker
+                Task2: create interceptor
+                    set and validate token here
+        Apply filters in Spring Boot
+            Task1: oAuth 2
+                validate the token from UI against the authentication server
+             --do filter
+Story2:
+    User Management
+        Task1: Add
+        Task2: Delete
+        Task3: Update(some info)
+        Task4: Sign in
+Story3:
+    Expense management
+        Front end
+            UI page
+                Task1: page data validate
+                Task2: Navigate to other pages
+            Expense data
+                Task1: Create pojo
+Story4:
+    Log the expenses across categories
+        Expense categories(Eg):
+            HouseHold
+                Groceries
+                Non-Grocery
+                    Rent
+                    Electricity
+                    Internet
+                    Mobile Recharge
+                    TV
+                    Bathroom/Sanitization
+                    Kitchen
+                    Water
+                    Bike Utilities
+                        Petrol
+                        Maintenance
+                    RO
+                        Maintenance
+                    Gasoline
+                People Expenses
+                    Ramasamy
+                    Suganya
+                        Cosmetics
+                    Kalkin
+                        Diaper
+                        Cosmetics
+                    Family
+
+
+        UI
+            show the usage/expense graph
+            show the prediction - based on the market
+        Grafana
+Story5:
+    Get Product prices from external RESTFul services online
+Story6:
+    Get Product Nutrition data from external RESTFul services online
+
+
+
+
+Done:
+-----
+Story0:
+    Basics set up from ground
+        Apply filters in Spring Boot -- done
+               webconfigurer works as a file
+                    -- restricted origin and headers
+
+        Add user from UI was success
+
+
+        Fix the http post method and commit
+        if fails the start understanding the http and make a simple get request to back end
+
