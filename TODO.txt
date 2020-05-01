@@ -1,5 +1,16 @@
+
+02-05-2020:
+----------
+TODO - story4 task2
+    add docker env for UI
+
+01-05-2020:
+-----------
+story4
+    Task1 - Added all possible query methods for expense
 24-04-2020:
 -----------
+depriortizied- for now
 Apply auth in Angular
     oAuth2
 Apply filters in Spring Boot
@@ -74,45 +85,38 @@ Story3:
             Expense data
                 Task1: Create pojo
 Story4:
-    Log the expenses across categories
-        Expense categories(Eg):
-            HouseHold
-                Groceries
-                Non-Grocery
-                    Rent
-                    Electricity
-                    Internet
-                    Mobile Recharge
-                    TV
-                    Bathroom/Sanitization
-                    Kitchen
-                    Water
-                    Bike Utilities
-                        Petrol
-                        Maintenance
-                    RO
-                        Maintenance
-                    Gasoline
-                People Expenses
-                    Ramasamy
-                    Suganya
-                        Cosmetics
-                    Kalkin
-                        Diaper
-                        Cosmetics
-                    Family
+    Expense management - Backend
+        As a User I should be able to record and view the expense details of a the family
+            Task1: Add REST endpoint in backend to add/update/delete/view expense records
+                --Add validations
+                --
+            Task2: Build GUI to allow User to add/update/delete/view expense records
 
-
+    ExpenseCategories.txt
         UI
             show the usage/expense graph
-            show the prediction - based on the market
-        Grafana
-Story5:
+            show the prediction of prices- based on the market
+Story:
+    Prepare docker image for UI
+Story:
+    Grafana/graphite integration
+        Task1:
+            set up graphite/grafana server in docker
+            integrate with backend
+
+Story:
     Get Product prices from external RESTFul services online
-Story6:
+Story:
     Get Product Nutrition data from external RESTFul services online
 
-
+Story:
+    Adding Logging support using ELK if possible
+Story:
+    Make docker containers for all components
+Story:
+    Support CI/CD using jenkins
+Story:
+    SetUp a prod server in cloud/local server with complete cloud like set up
 
 
 Done:
