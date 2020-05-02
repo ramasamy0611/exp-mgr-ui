@@ -1,0 +1,1 @@
+export interface SignIn { userName: string; password: string; encryptionKey: string; }

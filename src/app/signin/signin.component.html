@@ -1,1 +1,48 @@
-<p>signin works!</p>
+<div class="container">
+    <h1>Sign in form</h1>
+    <hr>
+    <div>
+        <form>
+            <label><b>User Name</b></label>
+            <input name="userName" type="text" [(ngModel)]="signInData.userName" />
+
+            <label><b>EncryptionKey</b></label>
+            <input name="encryptionKey" type="text" [(ngModel)]="signInData.encryptionKey" />
+
+            <label><b>Password</b></label>
+            <input name="password" type="password" [(ngModel)]="signInData.password" />
+            <!-- Material unchecked -->
+            <!--        <mdb-checkbox name="isAdminCheck" [(ngModel)]="signInData.type" >Are you Admin</mdb-checkbox>-->
+            <p>By creating an account you agree to our <a routerLink="#">Terms & Privacy</a>.</p>
+            <button name="signInbtn" type="submit" class="registerbtn" (click)="signIn(signInData)">SignIn</button>
+        </form>
+    </div>
+</div>
+
+
+<!--<p>signin works!</p>
+<div>
+    <title>Sign In form</title>
+</div>
+<div>
+    <form [formGroup]="signInForm" (ngSubmit)="signin()">
+        <label>
+            User Name:
+            <input type="text" [formControl]="userName">
+        </label>
+        <label>
+            Password:
+            <input type="password" [formControl]="password">
+        </label>
+        <label>
+            Password:
+            <input type="password" [formControl]="encryptionKey">
+        </label>
+        <label>
+            <button type="submit" (click)="signin()" [disabled]="!signInForm.valid">SignIn</button>
+        </label>
+        <label>
+            <button type="submit" (click)="register()">SignUp</button>
+        </label>
+    </form>
+</div>-->

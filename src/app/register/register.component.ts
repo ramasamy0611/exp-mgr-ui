@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Location} from '@angular/common';
-import {RegisterService} from '../register.service';
-import {User} from '../user';
-import {HttpErrorResponse} from '@angular/common/http';
-import {throwError} from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { RegisterService } from '../register.service';
+import { User } from '../user';
+import { HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs';
 
 @Component({
     selector: 'app-register',
@@ -12,7 +12,7 @@ import {throwError} from 'rxjs';
     styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-    user: User = {id: 0, firstName: '', emailId: '', password: '', lastName: '', type: ''};
+    user: User = { id: 0, firstName: '', emailId: '', password: '', lastName: '', type: '' };
 
     constructor(activatedRoute: ActivatedRoute, location: Location, private registerService: RegisterService) {
     }
@@ -22,10 +22,6 @@ export class RegisterComponent implements OnInit {
 
 
     onClick(user: User) {
-        /*  this.registerService.pingServer()
-              .toPromise()
-              .then(answer => console.info('Received from server', answer))
-              .catch(error => this.handleError(error));*/
         user.type = 'User';
         this.registerService.addUser(user)
             .toPromise()

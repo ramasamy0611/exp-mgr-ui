@@ -8,6 +8,7 @@ import {RegisterComponent} from './register/register.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {FormsModule} from '@angular/forms';
 import {TermsAndConditionsComponent} from './termsandconditions/terms-and-conditions.component';
+import{ReactiveFormsModule} from '@angular/forms'
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import {TermsAndConditionsComponent} from './termsandconditions/terms-and-condit
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
+        ReactiveFormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]
