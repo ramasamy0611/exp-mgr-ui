@@ -1,48 +1,31 @@
-<div class="container">
-    <h1>Sign in form</h1>
-    <hr>
-    <div>
-        <form>
-            <label><b>User Name</b></label>
-            <input name="userName" type="text" [(ngModel)]="signInData.userName" />
-
-            <label><b>EncryptionKey</b></label>
-            <input name="encryptionKey" type="text" [(ngModel)]="signInData.encryptionKey" />
-
-            <label><b>Password</b></label>
-            <input name="password" type="password" [(ngModel)]="signInData.password" />
-            <!-- Material unchecked -->
-            <!--        <mdb-checkbox name="isAdminCheck" [(ngModel)]="signInData.type" >Are you Admin</mdb-checkbox>-->
-            <p>By creating an account you agree to our <a routerLink="#">Terms & Privacy</a>.</p>
-            <button name="signInbtn" type="submit" class="registerbtn" (click)="signIn(signInData)">SignIn</button>
-        </form>
+<h2>SignIn</h2>
+<form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
     </div>
-</div>
-
-
-<!--<p>signin works!</p>
-<div>
-    <title>Sign In form</title>
-</div>
-<div>
-    <form [formGroup]="signInForm" (ngSubmit)="signin()">
-        <label>
-            User Name:
-            <input type="text" [formControl]="userName">
-        </label>
-        <label>
-            Password:
-            <input type="password" [formControl]="password">
-        </label>
-        <label>
-            Password:
-            <input type="password" [formControl]="encryptionKey">
-        </label>
-        <label>
-            <button type="submit" (click)="signin()" [disabled]="!signInForm.valid">SignIn</button>
-        </label>
-        <label>
-            <button type="submit" (click)="register()">SignUp</button>
-        </label>
-    </form>
-</div>-->
+    <div class="form-group">
+        <label for="encryptionkey">Username</label>
+        <input type="text" formControlName="encryptionkey" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.encryptionkey.errors }" />
+        <div *ngIf="submitted && f.encryptionkey.errors" class="invalid-feedback">
+            <div *ngIf="f.encryptionkey.errors.required">Encryptionkey is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            SignIn
+        </button>
+        <a routerLink="/register" class="btn btn-link">Register</a>
+    </div>
+</form>

@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {SigninComponent} from './signin/signin.component';
+import {SignInComponent} from './signin/signin.component';
 import {RegisterComponent} from './register/register.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {FormsModule} from '@angular/forms';
@@ -13,7 +13,7 @@ import{ReactiveFormsModule} from '@angular/forms'
 @NgModule({
     declarations: [
         AppComponent,
-        SigninComponent,
+        SignInComponent,
         RegisterComponent,
         DashboardComponent,
         TermsAndConditionsComponent

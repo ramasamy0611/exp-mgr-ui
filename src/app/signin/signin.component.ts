@@ -1,31 +1,65 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
-import { FormControl, FormGroup } from '@angular/forms'
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
+
 import { SignInService } from '../sign-in.service';
 import { SignIn } from '../signIn';
+import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 
-@Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
-})
-export class SigninComponent implements OnInit {
-  url: string;
-  signInData: SignIn = { userName: '', password: '', encryptionKey: '' };
+@Component({ templateUrl: 'signin.component.html' })
+export class SignInComponent implements OnInit {
+  signInForm: FormGroup;
+  signInData: SignIn = { userName: '', encryptionKey: '', password: '' };
+  loading = false;
+  submitted = false;
+  returnUrl: string;
 
-  constructor(httpClient: HttpClient, activatedRoute: ActivatedRoute, location: Location, private signInService: SignInService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private signInService: SignInService
+  ) {
+    // // redirect to home if already logged in
+    // this.router.navigate(['/']);
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.signInForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      encryptionkey: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['/signin'] || '/';
   }
-  signIn(signInData: SignIn) {
-    this.signInService.signIn(signInData)
+
+  // convenience getter for easy access to form fields
+  get f() { return this.signInForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.signInForm.invalid) {
+      return;
+    }
+
+    this.loading = true;
+    this.signInData.userName = this.f.username.value;
+    this.signInData.encryptionKey = this.f.encryptionkey.value;
+    this.signInData.password = this.f.password.value;
+    this.signInService.signIn(this.signInData)
       .toPromise()
-      .then(answer => console.info('Received from server', JSON.stringify(answer)))
-      .catch(error => this.handleError(error));
+      .then(
+        data => {
+          this.router.navigate(["/welcome"]);
+        }).catch(error => {
+          this.loading = false;
+        });
   }
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
