@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
     loading = false;
     submitted = false;
     user: User = { id: 0, firstName: '', lastName: '', emailId: '', type: '', };
-    signInData: SignIn = { userName: '', encryptionKey: '', password: '' };
+    signInData: SignIn = { signInId: 0, userName: '', encryptionKey: '', password: '' };
     signUpData: SignUp = { signIn: null, user: null };
 
     constructor(

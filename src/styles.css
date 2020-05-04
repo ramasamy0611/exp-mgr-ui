@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+div{
+    width: fit-content;
+    background-color: cadetblue;
+    top: auto;
+    text-align: center;
+  }
+  
+  navrout{
+    width: 30%;
+    left: 30%;
+    color: chocolate;
+    text-align: center ;
+  
+  }
+  span {
+    font-weight: bold;
+    background: lightgray;
+    padding: .3em .8em;
+    cursor: pointer;
+  }
+  
+  .play-container {
+    padding: 3em;
+    border: 1px solid lightgray;
+    margin-bottom: 1em;
+  }
+  
+  form-group {
+        padding: 1em;
+        margin-bottom: 2em;
+        align-content: center;
+    }
+  h1 {
+    margin-top: 2em;
+  }

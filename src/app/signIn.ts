@@ -1,1 +1,1 @@
-export interface SignIn { userName: string; password: string; encryptionKey: string; }
+export interface SignIn { signInId: number, userName: string; password: string; encryptionKey: string; }

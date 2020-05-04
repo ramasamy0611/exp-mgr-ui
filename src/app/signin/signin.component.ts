@@ -11,7 +11,7 @@ import { throwError } from 'rxjs';
 @Component({ templateUrl: 'signin.component.html' })
 export class SignInComponent implements OnInit {
   signInForm: FormGroup;
-  signInData: SignIn = { userName: '', encryptionKey: '', password: '' };
+  signInData: SignIn = { signInId: 0, userName: '', encryptionKey: '', password: '' };
   loading = false;
   submitted = false;
   returnUrl: string;
@@ -56,7 +56,7 @@ export class SignInComponent implements OnInit {
       .toPromise()
       .then(
         data => {
-          this.router.navigate(["/welcome"]);
+          this.router.navigate(["/welcome"], { state: { signInInfo: data } });
         }).catch(error => {
           this.loading = false;
         });
