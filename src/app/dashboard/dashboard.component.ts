@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import { RestResponse } from '../restresponse';
+import { SignIn } from '../signIn';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,12 +9,19 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  title = 'Welcome to my Home Expense Manager';
+  title = 'Expense Manager Dashboard';
 
-  constructor() {
+  signInResponse: RestResponse;
+  userName: string = '';
+  signIn: SignIn;
+
+  constructor(private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.signInResponse = history.state["signInInfo"];
+    this.signIn = this.signInResponse.responsePayLoad;
+    this.userName = this.signIn.userName.toUpperCase();
+    console.log(this.userName);
   }
-
 }

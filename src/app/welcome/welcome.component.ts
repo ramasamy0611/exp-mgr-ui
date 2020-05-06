@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Data, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { RestResponse } from '../restresponse';
-import { SignIn } from '../signIn';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -10,17 +7,10 @@ import { SignIn } from '../signIn';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
-  signInResponse: RestResponse;
-  userName: string = '';
-  signIn: SignIn;
-
+  title = 'Welcome to my Home Expense Manager';
   constructor(private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.signInResponse = history.state["signInInfo"];
-    this.signIn = this.signInResponse.responsePayLoad;
-    this.userName = this.signIn.userName.toUpperCase();
-    console.log(this.userName);
   }
 }

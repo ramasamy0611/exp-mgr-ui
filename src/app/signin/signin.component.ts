@@ -56,7 +56,7 @@ export class SignInComponent implements OnInit {
       .toPromise()
       .then(
         data => {
-          this.router.navigate(["/welcome"], { state: { signInInfo: data } });
+          this.router.navigate(["/dashboard"], { state: { signInInfo: data } });
         }).catch(error => {
           this.loading = false;
         });

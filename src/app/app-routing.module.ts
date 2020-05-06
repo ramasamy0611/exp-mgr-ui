@@ -8,11 +8,11 @@ import { WelcomeComponent } from './welcome/welcome.component';
 
 
 const routes: Routes = [
-  {path: '', component: DashboardComponent, pathMatch: 'full'},
+  {path: '', component: WelcomeComponent, pathMatch: 'full'},
+  {path: 'dashboard', component: DashboardComponent, pathMatch: 'full'},
   {path: '#', component: TermsAndConditionsComponent},
   {path: 'signin', component: SignInComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'welcome', component: WelcomeComponent}
+  {path: 'register', component: RegisterComponent}
 ];
 
 @NgModule({
