@@ -33,6 +33,9 @@
                 <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 <mat-hint *ngIf="!f.password.value">Enter your password</mat-hint>
             </mat-form-field>
+            <mat-card-actions>
+                <button mat-raised-button type="submit" color="primary">SIGNIN</button>
+         </mat-card-actions>
 
     </form>
 </div>

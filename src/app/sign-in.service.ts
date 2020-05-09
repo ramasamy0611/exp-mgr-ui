@@ -18,8 +18,8 @@ export class SignInService {
     this.httpClient = httpClient;
   }
 
-  signIn(singInData: SignIn): Observable<RestResponse> {
-    return this.httpClient.post<RestResponse>(this.baseUrl.concat('/signIn'), JSON.stringify(singInData), this.httpOptionsPost);
+  signIn(singInData: SignIn): Observable<SignIn> {
+    return this.httpClient.post<SignIn>(this.baseUrl.concat('/signIn'), JSON.stringify(singInData), this.httpOptionsPost);
   }
 
 }

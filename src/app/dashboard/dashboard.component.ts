@@ -19,8 +19,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.signInResponse = history.state["signInInfo"];
-    this.signIn = this.signInResponse.responsePayLoad;
+    this.signIn = history.state["signInInfo"];
     this.userName = this.signIn.userName.toUpperCase();
     console.log(this.userName);
   }
