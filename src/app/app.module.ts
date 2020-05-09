@@ -1,15 +1,24 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {SignInComponent} from './signin/signin.component';
-import {RegisterComponent} from './register/register.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
-import {FormsModule} from '@angular/forms';
-import {TermsAndConditionsComponent} from './termsandconditions/terms-and-conditions.component';
-import{ReactiveFormsModule} from '@angular/forms'
-
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { SignInComponent } from './signin/signin.component';
+import { RegisterComponent } from './register/register.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { FormsModule } from '@angular/forms';
+import { TermsAndConditionsComponent } from './termsandconditions/terms-and-conditions.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MaterialModule } from './MaterialModule';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 @NgModule({
     declarations: [
         AppComponent,
@@ -23,7 +32,17 @@ import{ReactiveFormsModule} from '@angular/forms'
         AppRoutingModule,
         FormsModule,
         HttpClientModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatCardModule,
+        MaterialModule,
+        MatSlideToggleModule
     ],
     providers: [],
     bootstrap: [AppComponent]

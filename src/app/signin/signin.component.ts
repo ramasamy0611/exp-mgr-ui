@@ -10,11 +10,15 @@ import { throwError } from 'rxjs';
 
 @Component({ templateUrl: 'signin.component.html' })
 export class SignInComponent implements OnInit {
+  title:string = 'Sing In Form';
   signInForm: FormGroup;
   signInData: SignIn = { signInId: 0, userName: '', encryptionKey: '', password: '' };
+  errResponse: HttpErrorResponse;
   loading = false;
   submitted = false;
   returnUrl: string;
+  errormessage: string;
+  hide: boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -22,8 +26,7 @@ export class SignInComponent implements OnInit {
     private router: Router,
     private signInService: SignInService
   ) {
-    // // redirect to home if already logged in
-    // this.router.navigate(['/']);
+    //this.router.navigate(['/'.concat(this.returnUrl)]);
   }
 
   ngOnInit() {
@@ -52,14 +55,17 @@ export class SignInComponent implements OnInit {
     this.signInData.userName = this.f.username.value;
     this.signInData.encryptionKey = this.f.encryptionkey.value;
     this.signInData.password = this.f.password.value;
-    this.signInService.signIn(this.signInData)
-      .toPromise()
-      .then(
-        data => {
-          this.router.navigate(["/dashboard"], { state: { signInInfo: data } });
-        }).catch(error => {
-          this.loading = false;
-        });
+    this.signInService
+      .signIn(this.signInData)
+      .subscribe(next => {
+        this.router.navigate(["/dashboard"], { state: { signInInfo: next } });
+      }, error => {
+        console.error("Failed to sing in", error);
+        this.loading = false;
+        this.errResponse= error;
+        this.errormessage = this.errResponse.error;
+        this.router.navigate(["/signin"]);
+      });
   }
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

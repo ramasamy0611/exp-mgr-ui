@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
-  title = 'Welcome to my Home Expense Manager';
+  title = 'Home Expense Manager';
   constructor(private activatedRoute: ActivatedRoute) {
   }
 

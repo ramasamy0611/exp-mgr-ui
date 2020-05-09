@@ -1,31 +1,66 @@
-<h2>SignIn</h2>
-<form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div *ngIf="f.username.errors.required">Username is required</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="encryptionkey">Username</label>
-        <input type="text" formControlName="encryptionkey" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.encryptionkey.errors }" />
-        <div *ngIf="submitted && f.encryptionkey.errors" class="invalid-feedback">
-            <div *ngIf="f.encryptionkey.errors.required">Encryptionkey is required</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-            <div *ngIf="f.password.errors.required">Password is required</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary">
-            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-            SignIn
-        </button>
-        <a routerLink="/register" class="btn btn-link">Register</a>
-    </div>
-</form>
+<h5 class="errMsg" *ngIf=errormessage>{{errormessage}}</h5>
+<h2>{{title}}</h2>
+<div class="signin-form">
+    <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+        <p>
+            <mat-form-field appearance="legacy">
+                <mat-label>User Name</mat-label>
+                <input matInput placeholder="username" type="text" formControlName="username"
+                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                <div *ngIf="submitted && f.username.errors">
+                    <div *ngIf="f.username.errors.required">Username is required</div>
+                </div>
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Username</mat-hint>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="legacy">
+                <mat-label>Encryption Key</mat-label>
+                <input matInput placeholder="ekey" type="text" formControlName="encryptionkey"
+                    [ngClass]="{ 'is-invalid': submitted && f.encryptionkey.errors }" />
+                <div *ngIf="submitted && f.encryptionkey.errors">
+                    <div *ngIf="f.encryptionkey.errors.required">Encryptionkey is required</div>
+                </div>
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Encryptionkey provided during registration</mat-hint>
+            </mat-form-field>
+        </p>
+        <!--<mat-slide-toggle #toggle>Show Password Details</mat-slide-toggle>-->
+        <p>
+            <mat-form-field><input matInput placeholder="Password" [type]="hide ? 'password' : 'text'"
+                    formControlName="password" required>
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <mat-hint *ngIf="!f.password.value">Enter your password</mat-hint>
+            </mat-form-field>
+
+    </form>
+</div>
+
+<!--        <form class=" flex-column flex-top flex-left" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+            <label class="labelCls" for="username">Username</label>
+            <input class="input-txt" type="text" formControlName="username"
+                [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+            <div *ngIf="submitted && f.username.errors">
+                <div *ngIf="f.username.errors.required">Username is required</div>
+            </div>
+            <label class="labelCls" for="encryptionkey">Encryptionkey</label>
+            <input class="input-txt" type="text" formControlName="encryptionkey"
+                [ngClass]="{ 'is-invalid': submitted && f.encryptionkey.errors }" />
+            <div *ngIf="submitted && f.encryptionkey.errors">
+                <div *ngIf="f.encryptionkey.errors.required">Encryptionkey is required</div>
+            </div>
+            <label class="labelCls" for="password">Password</label>
+            <input class="input-txt" type="password" formControlName="password"
+                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+            </div>
+            <div>
+                <button class="btn">
+                    <span *ngIf="loading"></span>
+                    SignIn
+                </button>
+                <a class="btn" routerLink="/register">Register</a>
+            </div>
+        </form>-->

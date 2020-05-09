@@ -1,4 +1,11 @@
 
+06-05-2020:
+-----------
+story2: - Task5
+    sign failure
+TODO - story4 task2
+    add docker env for UI
+
 02-05-2020:
 ----------
 TODO - story4 task2
@@ -76,6 +83,7 @@ Story2:
         Task2: Delete
         Task3: Update(some info)
         Task4: Sign in
+        Task5: Sign failure should redirect to sing in page again with the error message received from back end
 Story3:
     Expense management
         Front end
