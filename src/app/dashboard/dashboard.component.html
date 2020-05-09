@@ -1,2 +1,9 @@
 <h2>{{title}}</h2>
 <h1>Hello {{userName}}!!</h1>
+<div>
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="goToExpense()">Expense Menu</button>
+        <a mat-menu-item>View Price</a>
+    </mat-menu>
+</div>

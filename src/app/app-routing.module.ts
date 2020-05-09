@@ -5,6 +5,7 @@ import {RegisterComponent} from './register/register.component';
 import {TermsAndConditionsComponent} from './termsandconditions/terms-and-conditions.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { ExpenseComponent } from './expense/expense.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent, pathMatch: 'full'},
   {path: '#', component: TermsAndConditionsComponent},
   {path: 'signin', component: SignInComponent},
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: 'expense', component: ExpenseComponent}
 ];
 
 @NgModule({

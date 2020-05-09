@@ -39,31 +39,3 @@
 
     </form>
 </div>
-
-<!--        <form class=" flex-column flex-top flex-left" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
-            <label class="labelCls" for="username">Username</label>
-            <input class="input-txt" type="text" formControlName="username"
-                [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-            <div *ngIf="submitted && f.username.errors">
-                <div *ngIf="f.username.errors.required">Username is required</div>
-            </div>
-            <label class="labelCls" for="encryptionkey">Encryptionkey</label>
-            <input class="input-txt" type="text" formControlName="encryptionkey"
-                [ngClass]="{ 'is-invalid': submitted && f.encryptionkey.errors }" />
-            <div *ngIf="submitted && f.encryptionkey.errors">
-                <div *ngIf="f.encryptionkey.errors.required">Encryptionkey is required</div>
-            </div>
-            <label class="labelCls" for="password">Password</label>
-            <input class="input-txt" type="password" formControlName="password"
-                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-            <div *ngIf="submitted && f.password.errors">
-                <div *ngIf="f.password.errors.required">Password is required</div>
-            </div>
-            <div>
-                <button class="btn">
-                    <span *ngIf="loading"></span>
-                    SignIn
-                </button>
-                <a class="btn" routerLink="/register">Register</a>
-            </div>
-        </form>-->

@@ -19,13 +19,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MaterialModule } from './MaterialModule';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatMenuModule} from '@angular/material/menu';
+import { ExpenseComponent } from './expense/expense.component';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
     declarations: [
         AppComponent,
         SignInComponent,
         RegisterComponent,
         DashboardComponent,
-        TermsAndConditionsComponent
+        TermsAndConditionsComponent,
+        ExpenseComponent
     ],
     imports: [
         BrowserModule,
@@ -42,7 +46,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
         MatIconModule,
         MatCardModule,
         MaterialModule,
-        MatSlideToggleModule
+        MatSlideToggleModule,
+        MatMenuModule,
+        MatTableModule
     ],
     providers: [],
     bootstrap: [AppComponent]
