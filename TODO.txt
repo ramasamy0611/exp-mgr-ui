@@ -1,8 +1,18 @@
+11-05-2020:
+----------
+fetch expense detail per date on the same screen
+10-05-2020:
+-----------
+fetch expenses from db and show on expenses page - reactive - done
+
+09-05-2020:
+-----------
+Added expense and sign in page using angular materials
 
 06-05-2020:
 -----------
 story2: - Task5
-    sign failure
+    sign failure - done
 TODO - story4 task2
     add docker env for UI
 
@@ -92,6 +102,8 @@ Story3:
                 Task2: Navigate to other pages
             Expense data
                 Task1: Create pojo
+                    page navigation and enum pojo creattion all done
+                task2: fetch expenses from db and show on expenses page - reactive
 Story4:
     Expense management - Backend
         As a User I should be able to record and view the expense details of a the family
@@ -99,7 +111,7 @@ Story4:
                 --Add validations
                 --
             Task2: Build GUI to allow User to add/update/delete/view expense records
-
+                fetch expenses from db and show on expenses page - reactive
     ExpenseCategories.txt
         UI
             show the usage/expense graph
