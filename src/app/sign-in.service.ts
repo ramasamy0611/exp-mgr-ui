@@ -15,7 +15,6 @@ export class SignInService {
   httpOptionsPost = HTTP_OPTIONS_POST;
   constructor(private httpClient: HttpClient) {
     this.baseUrl = this.serverConfig.backEndUrl.concat('/userAdmin');
-    this.httpClient = httpClient;
   }
 
   signIn(singInData: SignIn): Observable<SignIn> {
