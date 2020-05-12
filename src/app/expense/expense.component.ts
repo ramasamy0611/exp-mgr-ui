@@ -23,6 +23,8 @@ export class ExpenseComponent implements OnInit {
   dateStr: string;
   pipe = new DatePipe('en-US')
   expenseData: ExpenseDataStr[];
+  matDatepicker: Date;
+  selDate: Date;
   constructor(
     private route: ActivatedRoute,
     private router: Router, private expenseService: ExpenseService) {
@@ -30,10 +32,13 @@ export class ExpenseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.expenseService.getExpenseByDate()
+  }
+  queryExpense() {
+    console.log()
+    this.expenseService.getExpenseAllExpensesByDate(this.selDate)
       .subscribe(data => {
         this.expenseData = [...this.getExpenseDataStrArr(data)];
-      }, error => { console.log('error->', error); });
+      }, error => { console.log('error->', error); this.expenseData = null; })
   }
   getExpenseDataStrArr(expenseDataArr: ExpenseData[]): ExpenseDataStr[] {
     return expenseDataArr.map(element =>
@@ -42,7 +47,7 @@ export class ExpenseComponent implements OnInit {
   }
   transformDataToStr(expenseData: ExpenseData): ExpenseDataStr {
     return {
-      transactionDate: expenseData.transactionDate,
+      transactionDate: (expenseData.transactionDate != null) ? expenseData.transactionDate : null,
 
       openingBalance: expenseData.openingBalance,
 

@@ -1,9 +1,14 @@
 <h2>{{title}}</h2>
 <div>
     <h3>Query Expenses here</h3>
+    <mat-form-field>
+        <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="selDate" (ngModelChange)="queryExpense()">
+        <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker></mat-datepicker>
+    </mat-form-field>
 </div>
-<div>
-    <h3>Epenses Available</h3>
+<div *ngIf="expenseData; else elseBlock">
+    <h3>Expenses Available</h3>
     <table mat-table [dataSource]="expenseData" class="mat-elevation-z8">
         <ng-container matColumnDef="transactionDate">
             <th mat-header-cell *matHeaderCellDef> ExpenseDate </th>
@@ -49,3 +54,4 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 </div>
+<ng-template #elseBlock>No expenses found for the selected date</ng-template>

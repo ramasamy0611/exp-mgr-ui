@@ -18,8 +18,12 @@ export class ExpenseService {
   url: string;
   constructor(private httpClient: HttpClient) { this.url = this.serverConfig.backEndUrl.concat('/expense'); }
 
-  public getExpenseByDate(): Observable<ExpenseData[]> {
+  public getExpenseAllExpenses(): Observable<ExpenseData[]> {
     return this.httpClient
       .get<ExpenseData[]>(this.url.concat('/getAllExpenses'));
+  }
+  public getExpenseAllExpensesByDate(date: Date): Observable<ExpenseData[]> {
+    return this.httpClient
+      .get<ExpenseData[]>(this.url.concat('/getAllExpensesByDate/' + date));
   }
 }
