@@ -2,8 +2,8 @@
 <div>
     <h3>Query Expenses here</h3>
     <mat-form-field>
-        <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="selDate" (ngModelChange)="queryExpense()">
-        <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+        <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="selectedDate" (ngModelChange)="queryExpense()">
+        <mat-datepicker-toggle matSuffix [for]="myDatepicker" ></mat-datepicker-toggle>
         <mat-datepicker #myDatepicker></mat-datepicker>
     </mat-form-field>
 </div>
