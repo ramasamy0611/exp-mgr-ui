@@ -1,11 +1,19 @@
 <h2>{{title}}</h2>
-<div>
+<div class=buttons>
     <h3>Query Expenses here</h3>
+
     <mat-form-field>
-        <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="selectedDate" (ngModelChange)="queryExpense()">
-        <mat-datepicker-toggle matSuffix [for]="myDatepicker" ></mat-datepicker-toggle>
-        <mat-datepicker #myDatepicker></mat-datepicker>
+        <input matInput [matDatepicker]="startDate" placeholder="Start date" [(ngModel)]="fromDate">
+        <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+        <mat-datepicker #startDate></mat-datepicker>
     </mat-form-field>
+    to
+    <mat-form-field>
+        <input matInput [matDatepicker]="endDate" placeholder="End Date" [(ngModel)]="toDate">
+        <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+        <mat-datepicker #endDate></mat-datepicker>
+    </mat-form-field>
+    <button mat-raised-button (click)="queryExpense()">Go</button>
 </div>
 <div *ngIf="expenseData; else elseBlock">
     <h3>Expenses Available</h3>

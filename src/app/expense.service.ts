@@ -26,4 +26,8 @@ export class ExpenseService {
     return this.httpClient
       .get<ExpenseData[]>(this.url.concat('/getAllExpensesByDate/' + date));
   }
+  public getExpenseAllExpensesBetweenDate(fromDate: Date, toDate: Date): Observable<ExpenseData[]> {
+    return this.httpClient
+      .get<ExpenseData[]>(this.url.concat('/getAllExpensesBetweenDates/' + fromDate + '/' + toDate));
+  }
 }

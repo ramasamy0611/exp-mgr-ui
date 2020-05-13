@@ -24,7 +24,8 @@ export class ExpenseComponent implements OnInit {
   pipe = new DatePipe('en-US')
   expenseData: ExpenseDataStr[];
   matDatepicker: Date;
-  selectedDate: Date;
+  fromDate: Date;
+  toDate: Date;
   constructor(
     private route: ActivatedRoute,
     private router: Router, private expenseService: ExpenseService) {
@@ -34,8 +35,8 @@ export class ExpenseComponent implements OnInit {
   ngOnInit(): void {
   }
   queryExpense() {
-    console.log('date now ',new Date(),"selectedDate",this.selectedDate)
-    this.expenseService.getExpenseAllExpensesByDate(this.selectedDate)
+    console.log('date now ',new Date(),"selectedDate",this.fromDate)
+    this.expenseService.getExpenseAllExpensesBetweenDate(this.fromDate, this.toDate)
       .subscribe(data => {
         this.expenseData = [...this.getExpenseDataStrArr(data)];
       }, error => { console.log('error->', error); this.expenseData = null; })
