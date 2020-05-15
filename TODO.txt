@@ -1,6 +1,11 @@
-11-05-2020:
+13/05/2020:
+------------
+fix the time difference - done
+story 3:task3: show expenses between dates - done
+
+11/12-05-2020:
 ----------
-fetch expense detail per date on the same screen
+fetch expense detail per date on the same screen - done partially
 10-05-2020:
 -----------
 fetch expenses from db and show on expenses page - reactive - done
@@ -104,6 +109,7 @@ Story3:
                 Task1: Create pojo
                     page navigation and enum pojo creattion all done
                 task2: fetch expenses from db and show on expenses page - reactive
+                task3: show expenses between dates
 Story4:
     Expense management - Backend
         As a User I should be able to record and view the expense details of a the family
