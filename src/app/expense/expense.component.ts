@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ExpenseData } from '../expenseData';
-import { TransactionTypeEnum } from '../transactionTypeEnum';
-import { TransactionSourceEnum } from '../transactionSourceEnum';
 import { formatDate, DatePipe } from '@angular/common';
 import { Local } from 'protractor/built/driverProviders';
 import { LocalizedString } from '@angular/compiler/src/output/output_ast';
@@ -16,7 +14,7 @@ import { ExpenseService } from '../expense.service';
 })
 export class ExpenseComponent implements OnInit {
   title = 'Expenses Page';
-  displayedColumns: string[] = ['transactionDate', 'expenseCategory', 'expenseName', 'transactionType', 'transactionSource', 'openingBalance', 'transactionAmount', 'closingBalance'];
+  displayedColumns: string[] = ['transactionDate', 'expenseCategory', 'expenseName', 'transactionSource', 'openingBalance', 'transactionAmount', 'closingBalance'];
   today: Date = new Date();
   dateStr: string;
   pipe = new DatePipe('en-US')
@@ -24,45 +22,49 @@ export class ExpenseComponent implements OnInit {
   matDatepicker: Date;
   fromDate: Date;
   toDate: Date;
-  addExpenseBoolean: boolean;
   expenseCategoryOptions: string[] = [''];
   expenseDate: Date;
   ExpenseCategoryEnum = ExpenseCategoryEnum;
   ExpenseNameEnum = ExpenseNameEnum;
-  expenseCategorySelected: ExpenseCategoryEnum;
-  expenseNameSelected: ExpenseNameEnum;
-  expenseDateSelected: Date;
+  TransactionTypeEnum = TransactionTypeEnum;
+  TransactionSourceEnum = TransactionSourceEnum;
   expenseDataToSave: ExpenseData;
   expenseAmountEntered: number;
-  isExpenseAddedSucces:boolean;
-  expenseId:Number;
+  isExpenseAddedSucces: boolean;
+  expenseId: Number;
+  isExpenseQuerySection: boolean;
+  isExpenseAddSection: boolean;
   constructor(
     private route: ActivatedRoute,
     private router: Router, private expenseService: ExpenseService) {
     this.dateStr = this.pipe.transform(this.today, 'short');
-    this.expenseDataToSave = { closingBalance: 0, expenseCategory: ExpenseCategoryEnum.EDUCATION, expenseName: ExpenseNameEnum.FOOD_GROCERIES, openingBalance: 0, transactionAmount: 0, transactionDate: null, transactionSource: TransactionSourceEnum.CASH, transactionType: TransactionTypeEnum.CREDIT }
+    this.expenseDataToSave = { closingBalance: 0, expenseCategory: null, expenseName: null, openingBalance: 0, transactionAmount: 0, transactionDate: null, transactionSource: null, transactionType: null }
   }
 
   ngOnInit(): void {
   }
   saveExpense() {
-    // this.expenseDataToSave.transactionDate = this.expenseDateSelected;
-    // this.expenseDataToSave.expenseCategory = this.expenseCategorySelected;
-    // this.expenseDataToSave.expenseName = ExpenseNameEnum[this.expenseNameSelected];
-    // this.expenseDataToSave.transactionAmount = this.expenseAmountEntered;
-    console.log("this.expenseDateSelected", this.expenseDataToSave.transactionDate, "this.expenseCategorySelected", this.expenseCategorySelected, "this.expenseNameSelected", this.expenseNameSelected, "this.expenseAmountEntered", this.expenseAmountEntered);
+    console.log('Save expense');
     this.expenseService.saveExpense(this.expenseDataToSave)
-    .subscribe(data => {
-      this.expenseId = data;
-      console.log('data received save expense',data);
-    }, error => { console.log('error->', error); this.expenseDataStrArr = null; });
-    this.addExpenseBoolean = false;
-    this.isExpenseAddedSucces = true;
+      .subscribe(data => {
+        this.expenseId = data;
+        this.isExpenseAddedSucces = true;
+        console.log('data received save expense', data);
+      }, error => { console.log('error->', error); this.expenseDataStrArr = null; });
+  }
+  isQueryExpense() {
+    this.isExpenseAddSection = false;
+    this.isExpenseQuerySection = true;
   }
   isAddExpense() {
-    this.addExpenseBoolean = true;
+    this.isExpenseQuerySection = false;
+    this.isExpenseAddSection = true;
+    this.expenseDataStrArr = null;
+    this.fromDate = null;
+    this.toDate = null;
   }
   queryExpense() {
+    this.isExpenseAddedSucces = false;
     console.log('date now ', new Date(), "selectedDate", this.fromDate)
     this.expenseService.getExpenseAllExpensesBetweenDate(this.fromDate, this.toDate)
       .subscribe(data => {
@@ -95,6 +97,21 @@ export class ExpenseComponent implements OnInit {
       closingBalance: expenseData.closingBalance
     }
   }
+}
+export enum TransactionSourceEnum {
+  CREDIT_CARD = "CREDIT_CARD",
+  DEBIT_CARD = "DEBIT_CARD",
+  UPI = "UPI",
+  NET_BANKING = "NET_BANKING",
+  PAY_TM = "PAY_TM",
+  GOOGLE_PAY = "GOOGLE_PAY",
+  CASH = "CASH"
+}
+export enum TransactionTypeEnum {
+  DEBT = "DEBT",
+  CREDIT = "CREDIT",
+  EXPENSE = "EXPENSE",
+  NA = "NA"
 }
 export enum ExpenseCategoryEnum {
   MORTGAGE_OR_RENT = "MORTGAGE_OR_RENT",

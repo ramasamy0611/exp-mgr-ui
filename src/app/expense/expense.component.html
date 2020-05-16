@@ -1,5 +1,5 @@
 <h2>{{title}}</h2>
-<div class=buttons>
+<div *ngIf="isExpenseQuerySection" class=buttons>
     <h3>Query Expenses here</h3>
 
     <mat-form-field>
@@ -16,7 +16,7 @@
         <mat-datepicker #endDate></mat-datepicker>
     </mat-form-field>
 </div>
-<div *ngIf="expenseDataStrArr; else elseBlock">
+<div *ngIf="expenseDataStrArr">
     <h3>Expenses Available</h3>
     <table mat-table [dataSource]="expenseDataStrArr" class="mat-elevation-z8">
         <ng-container matColumnDef="transactionDate">
@@ -63,22 +63,27 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 </div>
-<ng-template #elseBlock>No expenses found for the selected date</ng-template>
-<div>
-    <h3><button mat-raised-button (click)="isAddExpense()">Add expense</button></h3>
+<div *ngIf="isExpenseQuerySection && !expenseDataStrArr">
+    <p>No expenses found for the selected date</p>
 </div>
-<div *ngIf="addExpenseBoolean">
+<div>
+    <h3><button mat-raised-button (click)="isAddExpense()">Add expense data</button></h3>
+</div>
+<div>
+    <h3><button mat-raised-button (click)="isQueryExpense()">Search expense data</button></h3>
+</div>
+<div *ngIf="isExpenseAddSection">
 
     <mat-form-field>
         <mat-label>Expense Date</mat-label>
-        <input matInput [matDatepicker]="expenseDate" [(ngModel)]="expenseDataToSave.transactionDate">
+        <input matInput [matDatepicker]="expenseDate" [(ngModel)]="expenseDataToSave.transactionDate" name="date">
         <mat-datepicker-toggle matSuffix [for]="expenseDate"></mat-datepicker-toggle>
         <mat-datepicker #expenseDate></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Expense Category: </mat-label>
-        <mat-select [(ngModel)]="expenseCategorySelected" name="expenseDataToSave.expenseCategory">
+        <mat-select [(ngModel)]="expenseDataToSave.expenseCategory" name="category">
             <mat-option *ngFor="let enum of ExpenseCategoryEnum | keyvalue" [value]="enum.value">
                 {{enum.value}}
             </mat-option>
@@ -86,12 +91,38 @@
     </mat-form-field>
     <mat-form-field>
         <mat-label>Expense Name: </mat-label>
-        <mat-select [(ngModel)]="expenseNameSelected" name="expenseDataToSave.expenseName">
+        <mat-select [(ngModel)]="expenseDataToSave.expenseName" name="nameExp">
             <mat-option *ngFor="let enum of ExpenseNameEnum | keyvalue" [value]="enum.value">
                 {{enum.value}}
             </mat-option>
         </mat-select>
     </mat-form-field>
+    <mat-form-field>
+        <mat-label>Transaction Type: </mat-label>
+        <mat-select [(ngModel)]="expenseDataToSave.transactionType" name="tranType">
+            <mat-option *ngFor="let enum of TransactionTypeEnum | keyvalue" [value]="enum.value">
+                {{enum.value}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Transaction Source: </mat-label>
+        <mat-select [(ngModel)]="expenseDataToSave.transactionSource" name="sourceexp">
+            <mat-option *ngFor="let enum of TransactionSourceEnum | keyvalue" [value]="enum.value">
+                {{enum.value}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <!--  <mat-form-field>
+        <mat-label>Transaction Type: </mat-label>
+        <mat-select [(ngModel)]="transactionTypeEnumSelected" name="expenseDataToSave.transactionType">
+            <mat-option *ngFor="let enum of TransactionTypeEnum | keyvalue" [value]="enum.value">
+                {{enum.value}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+        -->
+
     <mat-form-field>
         <mat-label>Expense Amount: </mat-label>
         <input matInput [(ngModel)]="expenseDataToSave.transactionAmount" name="amount" placeholder="Expense Amount"
@@ -99,6 +130,6 @@
     </mat-form-field>
     <button mat-raised-button (click)="saveExpense()">Save</button>
 </div>
-<div *ngIf="isExpenseAddedSucces">
+<div *ngIf="isExpenseAddedSucces && isExpenseAddSection">
     <h5>Expense added succes expense ID {{expenseId}}</h5>
 </div>
