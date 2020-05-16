@@ -24,6 +24,7 @@ import { ExpenseComponent } from './expense/expense.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ExpenseCategoryEnum } from './expense/expenseCategoryEnum'
 // import { MatMomentDateModule } from '@angular/material/material-moment-adaptor';
 @NgModule({
     declarations: [
@@ -54,6 +55,7 @@ import { MatNativeDateModule } from '@angular/material/core';
         MatTableModule,
         MatDatepickerModule,
         MatNativeDateModule
+        
     ],
     providers: [],
     bootstrap: [AppComponent]
