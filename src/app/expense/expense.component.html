@@ -17,7 +17,10 @@
     </mat-form-field>
 </div>
 <div *ngIf="expenseDataStrArr">
-    <h3>Expenses Available</h3>
+    <div *ngIf="isExpenseAddedSucces && isExpenseAddSection">
+        <h5>Expense added succes deyails as shown below</h5>
+    </div>
+    <h3>Expenses Details: </h3>
     <table mat-table [dataSource]="expenseDataStrArr" class="mat-elevation-z8">
         <ng-container matColumnDef="transactionDate">
             <th mat-header-cell *matHeaderCellDef> ExpenseDate </th>
@@ -120,7 +123,4 @@
             type="text" />
     </mat-form-field>
     <button mat-raised-button (click)="saveExpense()">Save</button>
-</div>
-<div *ngIf="isExpenseAddedSucces && isExpenseAddSection">
-    <h5>Expense added succes expense ID {{expenseId}}</h5>
 </div>

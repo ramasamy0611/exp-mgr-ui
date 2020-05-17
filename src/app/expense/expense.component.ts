@@ -50,6 +50,8 @@ export class ExpenseComponent implements OnInit {
         let arr: ExpenseData[] = [data]
         this.expenseDataStrArr = [...this.getExpenseDataStrArr(arr)];
         this.isExpenseAddedSucces = true;
+        this.isExpenseQuerySection = false;
+        this.isExpenseAddSection = false;
         console.log('data received save expense', data);
       }, error => { console.log('error->', error); this.expenseDataStrArr = null; });
   }
