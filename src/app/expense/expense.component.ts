@@ -45,9 +45,10 @@ export class ExpenseComponent implements OnInit {
   }
   saveExpense() {
     console.log('Save expense');
-    this.expenseService.saveExpense(this.expenseDataToSave)
+    this.expenseService.saveExpenseAndGet(this.expenseDataToSave)
       .subscribe(data => {
-        this.expenseId = data;
+        let arr: ExpenseData[] = [data]
+        this.expenseDataStrArr = [...this.getExpenseDataStrArr(arr)];
         this.isExpenseAddedSucces = true;
         console.log('data received save expense', data);
       }, error => { console.log('error->', error); this.expenseDataStrArr = null; });

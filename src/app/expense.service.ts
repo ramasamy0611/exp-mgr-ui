@@ -24,6 +24,10 @@ export class ExpenseService {
     return this.httpClient
       .post<Number>(this.url.concat('/add'), JSON.stringify(expenseData), this.httpOptionsPost);
   }
+  public saveExpenseAndGet(expenseData: ExpenseData): Observable<ExpenseData> {
+    return this.httpClient
+      .post<ExpenseData>(this.url.concat('/addget'), JSON.stringify(expenseData), this.httpOptionsPost);
+  }
   public getExpenseAllExpenses(): Observable<ExpenseData[]> {
     return this.httpClient
       .get<ExpenseData[]>(this.url.concat('/getAllExpenses'));
