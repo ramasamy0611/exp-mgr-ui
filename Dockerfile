@@ -1,3 +1,4 @@
+# reference from https://mherman.org/blog/dockerizing-an-angular-app/
 # base image
 FROM node:12.2.0
 
